@@ -6,11 +6,13 @@ import { CategoryContainer, Title } from './category.styles';
 import { selectCategoriesMap } from '../../store/categories/category.selector';
 
 const Category = () => {
-  const categoriesMap = useSelector(selectCategoriesMap);
   const { category } = useParams();
+  console.log('render/re-rendering category component');
+  const categoriesMap = useSelector(selectCategoriesMap);
   const [products, setProducts] = useState(categoriesMap[category]);
 
   useEffect(() => {
+    console.log('effect firedd calling setProducts');
     setProducts(categoriesMap[category]);
   }, [category, categoriesMap]);
 
